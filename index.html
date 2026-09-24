@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro · Galardón Trilogía de Oro Querétaro</title>
+  <meta name="description" content="Registro de asistentes — Galardón Trilogía de Oro Internacional, Entrega 26. Querétaro, 24/09/26." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Galardón</p>
+      <h1>Trilogía de Oro<br /><span>Internacional</span></h1>
+      <div class="divider"><i></i></div>
+      <p class="edition">Entrega <strong>26</strong></p>
+
+      <ul class="meta">
+        <li><small>Sede</small>Hacienda los Albos, Querétaro</li>
+        <li><small>Fecha</small>24 · 09 · 2026</li>
+        <li><small>Hora</small>18:00 hrs</li>
+      </ul>
+    </header>
+
+    <!-- Formulario -->
+    <section class="card" id="formCard">
+      <h2>Registro de asistentes</h2>
+      <p class="lead">Confirma tu asistencia y descarga tu invitación personal.</p>
+
+      <form id="regForm" novalidate>
+        <label class="field">
+          <span>Nombre completo</span>
+          <input type="text" name="nombre" id="nombre" autocomplete="name" placeholder="Ej. María Fernanda López" required minlength="3" />
+          <em class="error"></em>
+        </label>
+
+        <label class="field">
+          <span>WhatsApp</span>
+          <input type="tel" name="whatsapp" id="whatsapp" autocomplete="tel" inputmode="tel" placeholder="Ej. 442 123 4567" required />
+          <em class="error"></em>
+        </label>
+
+        <label class="field">
+          <span>Correo electrónico</span>
+          <input type="email" name="correo" id="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
+          <em class="error"></em>
+        </label>
+
+        <button type="submit" class="btn" id="submitBtn">
+          <span class="btn-label">Confirmar registro</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-msg" id="formMsg" role="alert"></p>
+      </form>
+    </section>
+
+    <!-- Confirmación -->
+    <section class="card ticket hidden" id="ticketCard" aria-live="polite">
+      <p class="eyebrow">Registro confirmado</p>
+      <h2 id="tName">—</h2>
+
+      <div class="folio">
+        <small>Folio</small>
+        <strong id="tFolio">000</strong>
+      </div>
+
+      <ul class="meta compact">
+        <li><small>Fecha</small>24 · 09 · 2026</li>
+        <li><small>Hora</small>18:00 hrs</li>
+        <li><small>Sede</small>Hacienda los Albos</li>
+      </ul>
+
+      <button type="button" class="btn" id="downloadBtn">Descargar invitación PDF</button>
+      <button type="button" class="btn ghost" id="newBtn">Registrar a otra persona</button>
+    </section>
+
+    <footer class="foot">Presenta tu invitación (impresa o en tu celular) al llegar.</footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

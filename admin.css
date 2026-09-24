@@ -1,0 +1,180 @@
+/* Panel privado — complementa styles.css */
+
+body.admin {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(212, 175, 95, 0.14), transparent 55%),
+    var(--bg);
+}
+
+.panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.panel-title {
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin-top: 4px;
+}
+.topbar-actions { display: flex; gap: 8px; }
+
+.btn.sm {
+  width: auto;
+  margin: 0;
+  padding: 11px 18px;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.stat {
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.stat small {
+  font-size: 0.66rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tools ---------- */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.search {
+  flex: 1 1 320px;
+  padding: 14px 16px;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  outline: none;
+}
+.search:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(212, 175, 95, 0.12); }
+
+.chips { display: flex; gap: 6px; }
+.chip {
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip.active { color: #1a140a; background: var(--gold); border-color: var(--gold); font-weight: 500; }
+
+.exports { display: flex; gap: 8px; margin-left: auto; }
+
+.updated { font-size: 0.75rem; color: var(--muted); margin: 14px 0 8px; }
+
+/* ---------- Table ---------- */
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.table th {
+  text-align: left;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-weight: 400;
+  vertical-align: middle;
+}
+.table tr:last-child td { border-bottom: 0; }
+.table tr.arrived td { background: rgba(122, 190, 130, 0.06); }
+
+.folio-cell {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  font-variant-numeric: tabular-nums;
+}
+.name-cell { font-weight: 500; }
+.muted { color: var(--muted); }
+
+.checkin {
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--gold-light);
+  background: transparent;
+  border: 1px solid var(--gold);
+}
+.checkin:hover { background: rgba(212, 175, 95, 0.12); }
+.checkin.done { color: #9fdca7; border-color: rgba(122, 190, 130, 0.5); }
+.checkin:disabled { opacity: 0.5; cursor: wait; }
+
+.empty { padding: 32px; text-align: center; color: var(--muted); }
+
+/* ---------- Mobile: filas como tarjetas ---------- */
+@media (max-width: 760px) {
+  .stats { gap: 8px; }
+  .stat { padding: 14px; }
+  .exports { margin-left: 0; width: 100%; }
+  .exports .btn { flex: 1; }
+
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 14px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .table td { padding: 0; border: 0; }
+  .table td.folio-cell { grid-row: span 4; align-self: center; font-size: 1.8rem; }
+  .table td.date-cell { display: none; }
+  .table td.action-cell { margin-top: 8px; }
+  .checkin { width: 100%; padding: 10px; }
+}

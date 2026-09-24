@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Panel · Galardón de Oro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin">
+
+  <!-- Sin acceso / cargando -->
+  <main class="wrap" id="gateView">
+    <header class="hero">
+      <p class="eyebrow">Acceso privado</p>
+      <h1>Panel de<br /><span>Registro</span></h1>
+      <div class="divider"><i></i></div>
+      <p class="lead" id="gateMsg">Cargando…</p>
+    </header>
+  </main>
+
+  <!-- Panel -->
+  <main class="panel hidden" id="panelView">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Galardón Trilogía de Oro · Entrega 26</p>
+        <h1 class="panel-title">Registro de asistentes</h1>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn ghost sm" id="refreshBtn" title="Actualizar">Actualizar</button>
+      </div>
+    </header>
+
+    <section class="stats">
+      <div class="stat"><small>Registrados</small><strong id="sTotal">0</strong></div>
+      <div class="stat"><small>Llegaron</small><strong id="sLlegaron">0</strong></div>
+      <div class="stat"><small>Pendientes</small><strong id="sPendientes">0</strong></div>
+    </section>
+
+    <section class="tools">
+      <input type="search" id="search" class="search" placeholder="Buscar por folio, nombre, WhatsApp o correo…" autocomplete="off" />
+      <div class="chips" role="tablist">
+        <button class="chip active" data-filter="todos">Todos</button>
+        <button class="chip" data-filter="pendientes">Pendientes</button>
+        <button class="chip" data-filter="llegaron">Llegaron</button>
+      </div>
+      <div class="exports">
+        <button class="btn sm" id="xlsBtn">Excel</button>
+        <button class="btn sm" id="pdfBtn">PDF</button>
+      </div>
+    </section>
+
+    <p class="updated" id="updated"></p>
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Folio</th>
+            <th>Nombre</th>
+            <th>WhatsApp</th>
+            <th>Correo</th>
+            <th>Registro</th>
+            <th>Llegada</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="empty hidden" id="empty">Sin resultados.</p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

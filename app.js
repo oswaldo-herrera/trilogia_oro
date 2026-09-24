@@ -4,7 +4,7 @@
 
 // La conexión a Supabase está en config.js.
 // Si no hay credenciales, los folios se guardan solo en este navegador (modo prueba).
-const FOLIO_INICIAL = 100;
+const FOLIO_INICIAL = 1;
 
 const EVENTO = {
   nombre: "Galardón Trilogía de Oro Internacional",

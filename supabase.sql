@@ -4,9 +4,9 @@
 --  Al final se muestra la LLAVE del panel privado. Guárdala.
 -- =============================================================
 
--- 1) Tabla de registros (el folio arranca en 100 y es automático)
+-- 1) Tabla de registros (el folio arranca en 1 y es automático)
 create table if not exists public.registros_trilogia_oro (
-  folio        bigint generated always as identity (start with 100) primary key,
+  folio        bigint generated always as identity (start with 1) primary key,
   nombre       text not null check (char_length(nombre) between 3 and 120),
   whatsapp     text not null check (whatsapp ~ '^\d{10,13}$'),
   correo       text not null unique check (correo ~* '^[^\s@]+@[^\s@]+\.[^\s@]{2,}$'),

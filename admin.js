@@ -35,7 +35,24 @@ function denegar(msg) {
   panelView.classList.add("hidden");
   gateView.classList.remove("hidden");
   gateMsg.textContent = msg;
+  pedirLlave();
 }
+
+// Formulario para pegar la llave a mano (si el enlace llegó sin el #k=...)
+function pedirLlave() {
+  $("#keyCard").classList.remove("hidden");
+  $("#keyInput").focus();
+}
+
+$("#keyForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  // Acepta la llave sola o el enlace completo
+  const valor = $("#keyInput").value.trim();
+  const llave = (valor.match(/[?#&]k=([^&\s]+)/) || [, valor])[1];
+  try { localStorage.setItem("gdo_llave", llave); } catch {}
+  location.hash = "k=" + llave;
+  location.reload();
+});
 
 /* ---------- Datos ---------- */
 async function cargar() {
@@ -239,7 +256,8 @@ function exportarPDF() {
 if (!sb) {
   gateMsg.textContent = "Falta configurar Supabase en config.js.";
 } else if (!LLAVE) {
-  gateMsg.textContent = "Acceso restringido. Abre el panel con tu enlace privado.";
+  gateMsg.textContent = "Acceso restringido. Abre tu enlace privado o pega tu llave.";
+  pedirLlave();
 } else {
   cargar();
   setInterval(() => { if (!document.hidden) cargar(); }, REFRESCO_MS);
